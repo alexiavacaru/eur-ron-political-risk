@@ -1,0 +1,24 @@
+event_date,event_name,event_type,window_months
+2012-07-29,presidential impeachment referendum 2012,referendum,1
+2012-12-09,parliamentary election 2012,election_parliamentary,1
+2014-11-02,presidential election 2014 (first round),election_presidential,1
+2014-11-16,presidential election 2014 (second round),election_presidential,1
+2016-06-05,local elections 2016,election_local,1
+2016-12-11,parliamentary election 2016,election_parliamentary,1
+2017-02-05,anti-corruption protests peak / ordinance withdrawn,political_crisis,1
+2018-08-10,diaspora protest (10 august),political_crisis,1
+2019-05-26,european parliament election 2019 (romania),election_eu,1
+2019-11-10,presidential election 2019 (first round),election_presidential,1
+2019-11-24,presidential election 2019 (second round),election_presidential,1
+2020-03-16,state of emergency (covid-19),external_shock,1
+2020-09-27,local elections 2020,election_local,1
+2020-12-06,parliamentary election 2020,election_parliamentary,1
+2022-02-24,russia invasion of ukraine begins,external_shock,1
+2024-06-09,local elections 2024,election_local,1
+2024-06-09,european parliament election 2024 (romania),election_eu,1
+2024-11-24,"presidential election 2024 (first round, later annulled)",election_presidential,1
+2024-12-01,parliamentary election 2024,election_parliamentary,1
+2024-12-06,constitutional court annuls presidential election 2024,institutional_event,1
+2025-02-12,klaus iohannis leaves office; interim president appointed,institutional_event,1
+2025-05-04,repeat presidential election 2025 (first round),election_presidential,1
+2025-05-18,repeat presidential election 2025 (second round),election_presidential,1
