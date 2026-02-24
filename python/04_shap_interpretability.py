@@ -5,11 +5,9 @@ import os
 import shap
 import matplotlib.pyplot as plt
 
-# make sure output folder exists
 os.makedirs("reports/figures", exist_ok=True)
 
 #  SHAP depends on the model type
-
 # tree models (random forest / xgboost)
 if best_model_name in ["random_forest", "xgboost"]:
     explainer = shap.TreeExplainer(best_model)
