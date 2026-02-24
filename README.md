@@ -73,3 +73,5 @@
 - execute 01_cleaning.R
 - execute 02_breaks_garch.R
 - run python notebooks
+
+For Pyhton: https://colab.research.google.com/drive/1CNXKl5Fl9WlW5E8ExLIWMPhqygZKLoJS?usp=sharing
