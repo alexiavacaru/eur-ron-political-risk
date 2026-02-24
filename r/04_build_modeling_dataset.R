@@ -45,7 +45,7 @@ modeling_dataset <- fx %>%
 
 # 4) Define the target variable (high volatility)
 # We use vol_14d as the main volatility proxy
-# (in your monthly case, vol_14d = rolling volatility on ~6 months)
+#  vol_14d = rolling volatility on ~6 months
 
 threshold <- quantile(modeling_dataset$vol_14d, 0.80, na.rm = TRUE)
 
