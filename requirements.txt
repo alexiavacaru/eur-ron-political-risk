@@ -1,0 +1,8 @@
+pandas        # dataframe handling: read csv files, merge datasets, clean and transform data
+numpy         # numerical computations: arrays, mathematical operations, basic statistics
+matplotlib    # visualization: generate plots for analysis and report figures
+scikit-learn  # machine learning models and evaluation: logistic regression, random forest, metrics, train/test split
+shap          # model interpretability: explains which features influence predictions
+xgboost       # gradient boosting model for stronger predictive performance
+requests      # download data from web sources (e.g., BNR XML endpoint)
+lxml          # parse XML files when extracting exchange rate data
