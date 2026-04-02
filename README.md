@@ -40,13 +40,14 @@
 - figure export
 
 ## methods used in python
-- feature engineering
-- time-aware train/test split (80% train / 20% test)
-- logistic regression
-- random forest
-- xgboost (optional)
-- shap values for interpretability
-- evaluation metrics: accuracy, f1-score, roc-auc
+- Feature Engineering: Data scaling (x100), lagged variables (L1-L3), and volatility thresholding (75th percentile).
+- Time-Aware Split: Chronological 80/20 train/test division to prevent data leakage.
+- Statistical Validation: Multicollinearity checks via VIF (Variance Inflation Factor).
+- Machine Learning Models: Comparative analysis using Logistic Regression, Random Forest, and XGBoost.
+- Imbalance Handling: Implementation of scale_pos_weight to improve detection of rare volatility events.
+- Evaluation Metrics: Performance measured via Accuracy, F1-Score, and ROC-AUC.
+- Explainable AI (SHAP): Model interpretability using SHAP Values to quantify political impact (EPU) on FX risk.
+- Risk Monitoring: Visualization of predicted probabilities as an Early Warning System (EWS).
 
 ## generated outputs
 - returns time series plot
