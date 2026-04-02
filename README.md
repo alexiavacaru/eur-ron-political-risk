@@ -50,14 +50,13 @@
 - Risk Monitoring: Visualization of predicted probabilities as an Early Warning System (EWS).
 
 ## generated outputs
-- returns time series plot
-- garch conditional volatility plot
-- structural breaks plot
-- model performance table
-- shap summary plot
-
-all figures are exported to:
-reports/figures/
+all figures are exported to the /reports directory:
+- volatility_regimes.png - Returns time series plot
+- risk_monitoring.png - GARCH conditional volatility plot
+- vif_correlation.png - Structural breaks plot
+- roc_curve.png - Model performance table
+- shap_summary.png - SHAP summary plot
+- interpretations for each figure 
 
 ## project contribution
 - integration of econometrics and machine learning
