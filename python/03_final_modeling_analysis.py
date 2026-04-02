@@ -91,3 +91,55 @@ plt.figure(figsize=(10, 6))
 shap.summary_plot(shap_values, X_test, plot_type="dot", show=False)
 plt.title("Impactul Factorilor Politici asupra Volatilității (SHAP Values)")
 plt.show()
+
+import seaborn as sns
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+# Heatmap de Corelație - Esențial pentru a vedea legătura EPU -> Volatilitate
+plt.figure(figsize=(10, 8))
+corr_matrix = df[['log_return', 'vol_7d', 'epu_index', 'event_window']].corr()
+sns.heatmap(corr_matrix, annot=True, cmap='RdYlGn', center=0)
+plt.title("Matricea de Corelație: Analiza legăturii Politic-Economic")
+plt.show()
+
+# VIF - Să vedem dacă lag-urile sunt prea corelate (Multicoliniaritate)
+X_vif = X_train.assign(const=1)
+vif_data = pd.DataFrame()
+vif_data["feature"] = X_vif.columns
+vif_data["VIF"] = [variance_inflation_factor(X_vif.values, i) for i in range(len(X_vif.columns))]
+print("\n--- Analiza Multicoliniarității (VIF) ---")
+print(vif_data)
+
+from sklearn.metrics import roc_curve, auc
+best_model = models["XGBoost"] 
+# Calculăm probabilitățile și curba
+probs = best_model.predict_proba(X_test)[:, 1]
+fpr, tpr, _ = roc_curve(y_test, probs)
+roc_auc = auc(fpr, tpr)
+
+plt.figure(figsize=(7, 7))
+plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate (Alarme False)')
+plt.ylabel('True Positive Rate (Crize Detectate)')
+plt.title('Performanța Modelului în Detecția Instabilității (Curba ROC)')
+plt.legend(loc="lower right")
+plt.grid(alpha=0.3)
+plt.show()
+
+# Creăm un DataFrame de comparație pentru perioada de test
+comparison_df = pd.DataFrame({
+    'Data': df.iloc[split:]['date'],
+    'Real': y_test.values,
+    'Probabilitate_Model': best_model.predict_proba(X_test)[:, 1]
+})
+
+plt.figure(figsize=(15, 5))
+plt.plot(comparison_df['Data'], comparison_df['Probabilitate_Model'], label='Probabilitate de Criză (Estimată)', color='purple')
+plt.scatter(comparison_df[comparison_df['Real']==1]['Data'], [1]*len(comparison_df[comparison_df['Real']==1]), 
+            color='red', marker='|', label='Eveniment Volatilitate Real')
+plt.axhline(0.5, color='gray', linestyle='--')
+plt.title("Monitorizarea Riscului: Probabilitate Estimată vs. Realitate")
+plt.legend()
+plt.show()
